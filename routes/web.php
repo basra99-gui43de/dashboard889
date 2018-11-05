@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/guide', 'guide@index');
+Route::get('/addcompany/{id}', 'guide@addcompany');
+Route::post('/addcompany/{id}', 'guide@addcompany');
 Route::get('marketing', 'marketing@index');
 Route::get('jobs', 'jobs@index');
 Route::get('works', 'works@index');
