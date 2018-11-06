@@ -131,9 +131,9 @@
                                             <td id="title">{{$value->tele}}</td>
                                             <td id="title">{{$value->email}}</td>
                                             <td id="action"  style="text-align:center">
-                                                 <button class="btn btn-info" > <a href="/edit_service/{{$value->id}}" style="color:white;">  تعديل</a> </button>
+                                                 <button class="btn btn-info" > <a href="/edit_company/{{$value->id}}/{{$id}}" style="color:white;">  تعديل</a> </button>
                                             </td>
-                                            <td d="action" class="center"  style="text-align:center"> <button class="btn btn-danger"> <a href="/delete_service/{{$value->id}}" style="color:white"> حذف</a></button> </td>
+                                            <td d="action" class="centen-r"  style="text-align:center"> <button class="btn btdanger"> <a href="/delete_company/{{$value->id}}/{{$id}}" style="color:white"> حذف</a></button> </td>
                                            
                                         </tr>
                                         @endforeach

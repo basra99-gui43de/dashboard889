@@ -16,6 +16,10 @@ Route::get('/', function () {
 });
 Route::get('/guide', 'guide@index');
 Route::get('/addcompany/{id}', 'guide@addcompany');
+Route::get('/delete_company/{id}/{cat_id}', 'guide@delete_company');
+Route::get('/edit_company/{id}/{cat_id}', 'guide@edit_company');
+Route::post('/edit_company/{id}', 'guide@edit_company');
+
 Route::post('/addcompany/{id}', 'guide@addcompany');
 Route::get('marketing', 'marketing@index');
 Route::get('jobs', 'jobs@index');
