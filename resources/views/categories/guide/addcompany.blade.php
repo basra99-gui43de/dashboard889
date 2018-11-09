@@ -50,13 +50,13 @@
             </div>
             <div class="form-group col-md-12">
                 <label for="" class="control-label"> الايميل </label>
-                <input type="text" name="email" class="form-control" style="width: 49%;">
+                <input type="email" name="email" class="form-control" style="width: 49%;">
                
             </div>
          
             <div class="form-group col-md-12">
                 <label for="" class="control-label"> رقم الهاتف </label>
-                <input type="text" name="tele" class="form-control" style="width: 49%;">
+                <input type="number" name="tele" class="form-control" style="width: 49%;">
                
             </div>
         
@@ -65,8 +65,20 @@
                 <input type="text" name="location" class=" form-control" style="width: 49%;" >
             </div>
             <div class="form-group col-md-12">
+                <label for="" class="control-label">الموقع الالكتروني</label>
+                <input type="text" name="website" class=" form-control" style="width: 49%;" >
+            </div>
+            <div class="form-group col-md-12">
                 <label for="" class="control-label">الموقع على الخريطة</label>
                 <input type="text" name="location_map" class=" form-control" style="width: 49%;">
+            </div>
+            <div class="form-group col-md-12">
+                <label for="" class="control-label">شعار الشركة</label>
+                <input type="file" name="logo" class=" form-control" style="width: 49%;">
+            </div>
+            <div class="form-group col-md-12">
+                <label for="" class="control-label">صورة للشركة</label>
+                <input type="file" name="image" class=" form-control" style="width: 49%;">
             </div>
             <div class="form-group col-md-12">
                 <label for="" class="control-label">تفاصيل </label>

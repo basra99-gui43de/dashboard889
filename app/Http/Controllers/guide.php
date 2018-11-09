@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 Use App\Company;
+use App\Companydetail;
+use Auth;
+use Illuminate\Support\Facades\Input;
 class guide extends Controller
 {
   public function index(){
@@ -18,12 +21,30 @@ public function addcompany($id , Request $request){
     if($request->isMethod('post')){
         $newCompany=new Company();
         $newCompany->company_name=$request->input('company_name');
-        $newCompany->email=$request->input('email');
-        $newCompany->tele=$request->input('tele');
-        $newCompany->location=$request->input('location');
-        $newCompany->location_map=$request->input('location_map');
-        $newCompany->company_derails=$request->input('company_details');
         $newCompany->category_id=$id;
+        $newCompany->subject=$request->input('company_details');
+        if(Input::hasFile('logo')){
+            $img = Input::file('logo');
+            $newCompany->company_logo =  $img->move('company_logo', $img->getClientOriginalName());
+        }
+        $newCompany->user_id=Auth::user()->id;
+        $newCompany->save();
+
+        $companyDetails = new Companydetail();
+        $companyDetails->user_id=Auth::user()->id;
+        $companyDetails->company_id = $newCompany->id;
+        $companyDetails->email=$request->input('email');
+        $companyDetails->phone_number=$request->input('tele');
+        $companyDetails->location=$request->input('location');
+        $companyDetails->map=$request->input('location_map');
+        if(Input::hasFile('image')){
+            $img = Input::file('image');
+            $companyDetails->image =  $img->move('company_img', $img->getClientOriginalName());
+        }
+ 
+        $companyDetails->website=$request->input('website');
+        $companyDetails->save();
+    
     //  if(Input::hasFile('file')){
         //  $img = Input::file('file');
         //  $newServ->img =  $img->move('uploads', $img->getClientOriginalName());
