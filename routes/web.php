@@ -26,10 +26,15 @@ Route::get('jobs', 'jobs@index');
 Route::get('works', 'works@index');
 
 Route::get('phones', 'phones@index');
-
+Route::get('delete_phone/{id}', 'phones@delete');
+Route::post('addphones', 'phones@addphones');
 Route::get('users/{id}', function ($id) {
     
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

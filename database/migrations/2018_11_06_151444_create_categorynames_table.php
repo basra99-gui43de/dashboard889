@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGenderTable extends Migration
+class CreateCategorynamesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateGenderTable extends Migration
      */
     public function up()
     {
-        Schema::create('gender', function (Blueprint $table) {
+        Schema::create('categorynames', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('gender_type');
+            $table->unsignedInteger('user_id');
+            $table->string('category_logo');
+            $table->string('category_name');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateGenderTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gender');
+        Schema::dropIfExists('categorynames');
     }
 }

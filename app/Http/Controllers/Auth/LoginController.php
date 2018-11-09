@@ -36,4 +36,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    public function authenticated($request, $user )
+    {
+    session(['id' => $user->id
+   
+    ]);
+    return redirect()->intended($this->redirectPath());
+}
+public function logout(Request $request) {
+    Auth::logout();
+    return redirect('/login');
+  }
 }

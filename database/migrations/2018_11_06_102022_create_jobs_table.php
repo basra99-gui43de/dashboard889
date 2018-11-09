@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOperatorsTable extends Migration
+class CreateJobsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateOperatorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('operators', function (Blueprint $table) {
+        Schema::create('jobs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('operator_name');
-            $table->integer('tele');
-            $table->longText('location');
-            $table->integer('type_id')->unsigned();
-            $table->foreign('type_id')->references('id')->on('operators_types');
-
+            $table->unsignedInteger('user_id');
+            $table->string('title');
+            $table->string('gender_age');
+            $table->string('specialization');
+            $table->string('experiences');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateOperatorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('operators');
+        Schema::dropIfExists('jobs');
     }
 }
