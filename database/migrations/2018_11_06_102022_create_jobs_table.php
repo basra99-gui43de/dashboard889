@@ -17,7 +17,8 @@ class CreateJobsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('title');
-            $table->string('gender_age');
+            $table->integer('age');
+            $table->integer('gender');
             $table->string('specialization');
             $table->string('experiences');
             $table->timestamps();

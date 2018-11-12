@@ -69,27 +69,35 @@ public function delete_company($id ,$cat_id){
     // return redirect('addcompany');
 }
 
-public function edit_company($id ,$cat_id , Request $request){
+public function edit_company($id , Request $request){
     if($request->isMethod('post')){
         $editCompany=Company::find($id);
+        $editCompanyDetails=Companydetail::where('company_id', $id);
+        echo print_r( $editCompany);
+        echo print_r( $editCompanyDetails);
         $editCompany->company_name=$request->input('company_name');
-        $editCompany->email=$request->input('email');
-        $editCompany->tele=$request->input('tele');
-        $editCompany->location=$request->input('location');
-        $editCompany->location_map=$request->input('location_map');
+        $editCompanyDetails->email=$request->input('email');
+        $editCompanyDetails->tele=$request->input('phone_number');
+        $editCompanyDetails->location=$request->input('location');
+        $editCompanyDetails->location_map=$request->input('location_map');
         $editCompany->company_derails=$request->input('company_details');
         $editCompany->category_id=$id;
-    //  if(Input::hasFile('file')){
-        //  $img = Input::file('file');
-        //  $newServ->img =  $img->move('uploads', $img->getClientOriginalName());
-         
-    //  }
-    $newCompany->save();
+        if(Input::hasFile('logo')){
+            $img = Input::file('logo');
+            $newCompany->company_logo =  $img->move('company_logo', $img->getClientOriginalName());
+        }
+        if(Input::hasFile('image')){
+            $img = Input::file('image');
+            $companyDetails->image =  $img->move('company_img', $img->getClientOriginalName());
+        }
+     $editCompany->save();
+     $editCompanyDetails->save();
     return redirect('addcompany');
     }
     // }else{
         $company = Company::find($id);
-        $arr=Array('company' => $company , 'id'=>$id );
+        $companyDetails=Companydetail::where('company_id', $id)->get();
+        $arr=Array('company' => $company , 'id'=>$id , 'companyDetails' =>$companyDetails );
     
           return view('categories.guide.edit' , $arr );
     

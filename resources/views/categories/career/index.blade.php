@@ -41,41 +41,38 @@
         <div class="modal-body">
         <div class="container">
            
-            <form action="addjobs" method="post" enctype="multipart/form-data" >
+            <form action="addcareer" method="post" enctype="multipart/form-data" >
        
             <div class="form-group col-md-12">
-                <label for="" class="control-label">   العنوان    </label>
+                <label for="" class="control-label">   العنوان العمل   </label>
                 <input type="text" name="title" class="form-control" style="width: 49%;">
                
             </div>
             <div class="form-group col-md-12">
-                <label for="" class="control-label"> العمر  </label>
-                <input type="number" name="age" class="form-control" style="width: 49%;">
+                <label for="" class="control-label"> موقع العمل </label>
+                <input type="text" name="location" class="form-control" style="width: 49%;">
                
             </div>
          
             <div class="form-group col-md-12">
-                <label for="" class="control-label"> الجنس  </label>
+                <label for="" class="control-label"> رقم الهاتف </label>
                 <input type="number" name="tele" class="form-control" style="width: 49%;">
                
             </div>
         
             <div class="form-group col-md-12">
                 <label for="" class="control-label">صورة </label>
-                <select name="gender" id="" class=" form-control " style="width: 49%;">
-                <option value="1">ذكر</option>
-                <option value="2">انثى</option>
-                </select>
+                <input type="file" name="image" class=" form-control" style="width: 49%;" >
             </div>
             <div class="form-group col-md-12">
-                <label for="" class="control-label">التخصص </label>
-                <input type="text" name="specialization" class=" form-control" style="width: 49%;" >
+                <label for="" class="control-label">الموقع الالكتروني</label>
+                <input type="text" name="website" class=" form-control" style="width: 49%;" >
             </div>
+           
             <div class="form-group col-md-12">
-                <label for="" class="control-label">الخبرة </label>
-                <input type="text" name="experiences" class=" form-control" style="width: 49%;" >
+                <label for="" class="control-label">تفاصيل </label>
+                <textarea  name="subject" class=" form-control" style="width: 49%;" ></textarea>
             </div>
-          
            <input type="submit" value="حفظ" class="btn btn-success form-control" style="width: 49%;">
            <input type="hidden" value="{{ csrf_token() }}" name="_token">
  
@@ -118,39 +115,27 @@
                                     <thead>
                                         <tr>
                                             <th>ت</th>
-                                            <th> العنوان </th>
-                                            <th>العمر</th>
-                                            <th>الجنس</th>
-
-                                            <th>التخصص </th>
-                                            <th>الخبرة </th>
+                                            <th>العنوان </th>
+                                            <th>التفاصيل</th>
+                                         
+                                           
                                             <th style="background-color:#286090;;color:white">تعديل</th>
                                             <th style="background-color:#d9534f;color:white" >حذف</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         
-                                    @foreach($jobs as $value)
+                                    @foreach($career as $value)
                                         <tr class="odd gradeX">
                                         <td id="title" style="text-align:center">{{$value->id}}</td>
-                                        <td id="title" style="text-align:center">{{$value->title}}</td>
-                                        <td id="title" style="text-align:center">{{$value->age}}</td>
-
-                                            <td id="title" style="text-align:center">
-
-                                           @if( $value->gender === 1 )
-                                           ذكر
-                                           @elseif ( $value->gender === 2)
-                                            انثى
-                                           @endif
-                                            </td>
-                                            <td id="title" style="text-align:center">{{$value->specialization}}</td>
-                                            <td id="title" style="text-align:center">{{$value->experiences}}</td>
+                                            <td id="title" style="text-align:center">{{$value->title}}</td>
+                                            <td id="title" style="text-align:center">{{$value->subject}}</td>
+                       
                                            
                                             <td id="action"  style="text-align:center">
                                                  <button class="btn btn-info" > <a href="/edit_company/{{$value->id}}" style="color:white;">  تعديل</a> </button>
                                             </td>
-                                            <td d="action" class="centen-r"  style="text-align:center"> <button class="btn btn-danger"> <a href="/delete_jobs/{{$value->id}}" style="color:white"> حذف</a></button> </td>
+                                            <td d="action" class="centen-r"  style="text-align:center"> <button class="btn btn-danger"> <a href="/delete_career/{{$value->id}}" style="color:white"> حذف</a></button> </td>
                                            
                                         </tr>
                                         @endforeach

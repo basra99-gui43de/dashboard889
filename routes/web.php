@@ -11,30 +11,35 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/guide', 'guide@index');
-Route::get('/addcompany/{id}', 'guide@addcompany');
-Route::get('/delete_company/{id}/{cat_id}', 'guide@delete_company');
-Route::get('/edit_company/{id}/{cat_id}', 'guide@edit_company');
-Route::post('/edit_company/{id}', 'guide@edit_company');
+Route::get('/', 'guide@index')->middleware('auth');
+Route::get('/guide', 'guide@index')->middleware('auth');
+Route::get('/addcompany/{id}', 'guide@addcompany')->middleware('auth');
+Route::get('/delete_company/{id}/{cat_id}', 'guide@delete_company')->middleware('auth');
+Route::get('/edit_company/{id}/{cat_id}', 'guide@edit_company')->middleware('auth');
+Route::post('/edit_company/{id}', 'guide@edit_company')->middleware('auth');
 
-Route::post('/addcompany/{id}', 'guide@addcompany');
-Route::get('marketing', 'marketing@index');
-Route::get('jobs', 'jobs@index');
-Route::get('works', 'works@index');
+Route::post('/addcompany/{id}', 'guide@addcompany')->middleware('auth');
+Route::get('marketing', 'marketing@index')->middleware('auth');
+//==================Career Route =========================
+Route::get('career', 'careers@index')->middleware('auth');
+Route::post('addcareer', 'careers@addcareer')->middleware('auth');
+Route::get('delete_career/{id}', 'careers@delete_career')->middleware('auth');
 
-Route::get('phones', 'phones@index');
-Route::get('delete_phone/{id}', 'phones@delete');
-Route::post('addphones', 'phones@addphones');
+//=================== End Career Route ===================
+Route::get('job', 'jobs@index')->middleware('auth');
+Route::post('addjobs', 'jobs@addjobs')->middleware('auth');
+Route::get('delete_jobs/{id}', 'jobs@delete_jobs')->middleware('auth');
+
+Route::get('phones', 'phones@index')->middleware('auth');
+Route::get('delete_phone/{id}', 'phones@delete')->middleware('auth');
+Route::post('addphones', 'phones@addphones')->middleware('auth');
 Route::get('users/{id}', function ($id) {
     
 });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->middleware('auth');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->middleware('auth');

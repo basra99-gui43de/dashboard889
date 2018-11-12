@@ -107,14 +107,14 @@
              
             </li>
             <li>
-              <a href="jobs">
-                <i class="fa fa-th"></i> <span>وظائف</span> 
+              <a href="career">
+                <i class="fa fa-th"></i> <span>اعمال</span> 
               </a>
             </li>
             <li class="treeview">
-              <a href="works">
+              <a href="job">
                 <i class="fa fa-pie-chart"></i>
-                <span>اعمال</span>
+                <span>وظائف</span>
                
               </a>
               
