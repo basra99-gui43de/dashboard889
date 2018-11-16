@@ -48,5 +48,13 @@ class careers extends Controller
             $comp->delete();
             return redirect('career');
     }
-
+    public function edit_career($id){
+        $career= Career::where('careerdetails_id', $id)->get();
+        $careerdetails= Careerdetails::find($id);
+        $arr=Array('career' => $career ,
+                   'careerdetails' => $careerdetails 
+                );
+    
+        return view('categories.career.edit' , $arr);
+    }
 }

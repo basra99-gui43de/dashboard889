@@ -148,7 +148,7 @@
                                             <td id="title" style="text-align:center">{{$value->experiences}}</td>
                                            
                                             <td id="action"  style="text-align:center">
-                                                 <button class="btn btn-info" > <a href="/edit_company/{{$value->id}}" style="color:white;">  تعديل</a> </button>
+                                                 <button class="btn btn-info" > <a href="/edit_jobs/{{$value->id}}" style="color:white;">  تعديل</a> </button>
                                             </td>
                                             <td d="action" class="centen-r"  style="text-align:center"> <button class="btn btn-danger"> <a href="/delete_jobs/{{$value->id}}" style="color:white"> حذف</a></button> </td>
                                            

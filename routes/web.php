@@ -24,11 +24,14 @@ Route::get('marketing', 'marketing@index')->middleware('auth');
 Route::get('career', 'careers@index')->middleware('auth');
 Route::post('addcareer', 'careers@addcareer')->middleware('auth');
 Route::get('delete_career/{id}', 'careers@delete_career')->middleware('auth');
+Route::get('edit_career/{id}', 'careers@edit_career')->middleware('auth');
 
 //=================== End Career Route ===================
 Route::get('job', 'jobs@index')->middleware('auth');
 Route::post('addjobs', 'jobs@addjobs')->middleware('auth');
 Route::get('delete_jobs/{id}', 'jobs@delete_jobs')->middleware('auth');
+Route::get('edit_jobs/{id}', 'jobs@edit_jobs')->middleware('auth');
+Route::post('edit_jobs/{id}', 'jobs@edit_jobs')->middleware('auth');
 
 Route::get('phones', 'phones@index')->middleware('auth');
 Route::get('delete_phone/{id}', 'phones@delete')->middleware('auth');

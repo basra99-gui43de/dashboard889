@@ -44,4 +44,24 @@ class jobs extends Controller
             return redirect('job');
     }
 
+public function edit_jobs($id  , Request $request){
+    if($request->isMethod('post')){
+        $editjobs = Job::find($id);
+        echo $editjobs;
+        $editjobs->title = $request->input('title');
+        $editjobs->age = $request->input('age');
+        $editjobs->gender = $request->input('gender');
+        $editjobs->specialization = $request->input('specialization');
+        $editjobs->experiences = $request->input('experiences');
+        $editjobs->save();
+
+        return redirect('job');
+    }else{
+    $jobs= Job::all();
+    $arr=Array('jobs' => $jobs);
+
+      return view('categories.jobs.edit' , $arr);
+   
+    }
+}
 }
