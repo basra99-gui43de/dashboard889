@@ -15,7 +15,7 @@ Route::get('/', 'guide@index')->middleware('auth');
 Route::get('/guide', 'guide@index')->middleware('auth');
 Route::get('/addcompany/{id}', 'guide@addcompany')->middleware('auth');
 Route::get('/delete_company/{id}/{cat_id}', 'guide@delete_company')->middleware('auth');
-Route::get('/edit_company/{id}/{cat_id}', 'guide@edit_company')->middleware('auth');
+Route::get('/edit_company/{cat_id}/{id}', 'guide@edit_company')->middleware('auth');
 Route::post('/edit_company/{id}', 'guide@edit_company')->middleware('auth');
 
 Route::post('/addcompany/{id}', 'guide@addcompany')->middleware('auth');
